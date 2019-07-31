@@ -64,6 +64,52 @@ a:hover:not(.active) {
   margin:1rem;
 }
 
+.chart {
+  cursor: pointer;
+  /* border:1px solid black; */
+  width:100%;
+  padding:1rem;
+  margin-bottom:1rem;
+}
+
+
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5rem;
+  font-family: "HK Grotesk", sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 5rem;
+  line-height: 0.9;
+  font-family: "Crimson text";
+  margin-bottom: 1rem;
+  font-weight: 700;
+
+}
+
+h2 {
+  font-size: 3rem;
+  font-family: "Crimson text"
+}
+
+h6 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+hr {
+  margin: 2rem 0;
+}
+
+::selection {
+  background: #ff6346;
+  color: #fff;
+}
+
 #intro{
   margin:5rem;
   width:90%;
@@ -135,50 +181,6 @@ color:#ff6346;
 }
 
 
-button {
-  position: absolute;
-  right: 50px;
-  top: 10px;
-}
-/*
-section {
-  margin-bottom: 3rem;
-} */
-
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 0.5rem;
-  font-family: "HK Grotesk", sans-serif;
-  font-weight: 400;
-}
-
-h1 {
-  font-size: 5rem;
-  line-height: 0.9;
-  font-family: "Crimson text";
-  margin-bottom: 1rem;
-  font-weight: 700;
-
-}
-
-h2 {
-  font-size: 3rem;
-  font-family: "Crimson text"
-}
-
-h6 {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-hr {
-  margin: 2rem 0;
-}
-
-::selection {
-  background: #ff6346;
-  color: #fff;
-}
 
 #legend > * {
   font-size: 2rem;
@@ -198,27 +200,28 @@ hr {
   margin-right: 1rem;
 }
 
-#bees #legend {
-  margin-top: 0;
-  margin-bottom: 2rem;
-}
-
-.label {
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 0.8rem;
-}
-
-.misto::before {
+.nc::before {
   content: "";
   display: inline-block;
   width: 1rem;
   height: 0.6rem;
   margin-right: 0.5rem;
-  background: #FF0000;
+  background: #00095E;
 }
 
-.frasi::before {
+
+.dash::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 0.6rem;
+  margin-right: 0.5rem;
+  border:none;
+  border-bottom:2px dotted black;
+}
+
+
+.na::before {
   content: "";
   display: inline-block;
   width: 1rem;
@@ -228,176 +231,41 @@ hr {
 }
 
 
-.sintagma::before {
+.cc::before {
   content: "";
   display: inline-block;
   width: 1rem;
   height: 0.6rem;
   margin-right: 0.5rem;
-  background: #FFFF00;
+  background: #7F0000;
 }
 
-.parole::before {
+.ca::before {
   content: "";
   display: inline-block;
   width: 1rem;
   height: 0.6rem;
   margin-right: 0.5rem;
-  background: #006600;
+  background: #ff0000;
 }
 
 
 
-svg {
-  margin: auto;
-  margin-bottom: 2rem;
+.area {
+fill: steelblue;
+clip-path: url(#clip);
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  shape-rendering: crispEdges;
+.zoom {
+cursor: move;
+fill: none;
+pointer-events: all;
 }
 
-.domain {
-  stroke: #777;
-  display: none;
+.x.axis .domain {
+
 }
 
-.tick text {
-  font-size: 0.7rem;
-  font-family: "HK Grotesk",
-  sans-serif;
-}
-
-.yAxis .tick line, .xAxis .tick line {
-  stroke-width: 0.5;
-  stroke: #777;
-}
-
-.xAxis .tick line {
-  stroke-dasharray: 2,2;
-}
-
-.timelineAxis .tick line {
-  stroke-dasharray: 2,2;
-  stroke: #777;
-}
-
-.tick text {
-  fill: #777;
-}
-
-.buttons {
-  display: inline;
-  flex-wrap: wrap;
-  align-items:center;
-}
-
-.buttons p {
-  margin-right: 0.5rem;
-}
-
-.xAxis .tick line {
-  stroke-width: 1;
-  stroke: #777;
-}
-
-button {
-  background: #fff;
-  padding: 0.2rem 0.5rem;
-  border: 1px solid rgba(0,0,0,.3);
-  border-radius: 1px;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  transition: all 0.3s ease;
-  outline: none;
-  font-family: "HK Grotesk", sans-serif;
-  font-size: 1rem;
-}
-
-button:focus {
-  outline: none;
-  background-color: #000;
-}
-
-.circ {
-  transition: opacity 0.3s ease;
-  border: 1px solid black;
-}
-
-
-.circ:hover {
-  cursor: pointer;
-  stroke: black;
-}
-
-.button-label {
-  font-family: "HK Grotesk", sans-serif;
-  font-size: 0.9rem;
-}
-
-.b_sel {
-  border: 1px solid #000;
-  color: #0A0101;
-}
-
-.b_sel:hover {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.d_sel {
-  border: 1px solid #000;
-  color: #000;
-}
-
-.d_sel:hover {
-  background: black;
-  color:white;
-}
-
-.d_del {
-  background: black;
-  color: white;
-  border: 1px solid black;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.disabled {
-  pointer-events: none;
-  cursor: normal;
-}
-
-.selected {
-  color: white;
-}
-
-.source {
-  font-style: italic;
-  font-size: 0.8rem;
-  color: #777;
-}
-
-#tooltip {
-  position: fixed;
-  bottom: 3rem;
-  left: 3rem;
-  opacity: 0;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-#tooltip p{
-  margin-right: 0.2rem;
-  line-height: 1.3;
-  text-transform: lowercase;
-  font-size: 1rem;
-  transition: .3s ease;
-  display: inline-block;
-  font-family: "HK Grotesk", sans-serif;
-  text-transform: uppercase;
-}
 
 /*bottom bar/*/
 .bottom-bar {

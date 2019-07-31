@@ -1,150 +1,125 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
+</head>
+<body>
 
-    .area {
-  fill: steelblue;
-  clip-path: url(#clip);
-}
+  <div id="head">
+    <div class="nav float-md-right">
 
-.zoom {
-  cursor: move;
-  fill: none;
-  pointer-events: all;
-}
+    </div>
+  </div>
 
-.x.axis .domain {
-}
+  <content id="content">
+    <a class="nav-link" href="https://densitydesign.github.io/atlante-calvino/landscape/#">&larr; territorio</a>
+    <section id="intro">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-12 col-sm-12 ">
+            <h1>Il dubbio</h1>
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida dictum fusce ut placerat orci nulla pellentesque dignissim. Massa sapien faucibus et molestie. Praesent elementum facilisis leo vel fringilla est ullamcorper eget nulla. Turpis massa sed elementum tempus egestas sed sed. Erat pellentesque adipiscing commodo elit at imperdiet. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Mauris a diam maecenas sed enim ut sem viverra. Adipiscing commodo elit at imperdiet dui accumsan sit amet. Tortor consequat id porta nibh venenatis cras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</style>
-<svg id="nebbia1" width="960" height="500"></svg>
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script type="text/javascript">
-    var margin = ({
-        top: 20,
-        right: 30,
-        bottom: 30,
-        left: 40
-    });
-    var width = 960 - margin.left - margin.right;
-    var height = 560 - margin.top - margin.bottom;
 
-    var x, y;
+      <div id="legend" class="col-lg-8 col-md-12 col-sm-12 ">
+        <h6>Numero di caratteri nel tempo</h6>
+          <p class="dash">assenza pubblicazioni</p>
+      </div>
+      <div class="chart">
+        <svg id="nebbia1"></svg>
+      </div>
 
-    var svg = d3.select('#nebbia1')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom);
 
-    d3.csv('data.csv').then(function(data) {
-        console.log(data);
-        data = data.sort(function(a, b) {
-            return a.date - b.date;
-        })
-        var series = d3.stack().keys(data.columns.slice(1))(data)
-        // console.log(series)
 
-        var color = d3.scaleOrdinal()
-            .domain(data.columns.slice(1))
-            .range(d3.schemeCategory10);
 
-        x = d3.scaleLinear()
-            .domain(d3.extent(data, d => d.date))
-            .range([margin.left, width - margin.right])
+      <div id="legend" class="col-lg-8 col-md-12 col-sm-12 ">
+        <h6>Occorrenza campo semantico del dubbio nel tempo</h6>
+        <p class="nc">nebbia concreta</p>
+        <p class="na">nebbia astratta</p>
+        <p class="cc">cancellazione concreta</p>
+        <p class="ca">cancellazione astratta</p>
+        <p class="dash">assenza pubblicazioni</p>
+      </div>
+      <div class="chart">
+        <svg id="nebbia2">
+        </svg>
+      </div>
 
-        y = d3.scaleLinear()
-            .domain([0, d3.max(series, d => d3.max(d, d => d[1]))]).nice()
-            .range([height - margin.bottom, margin.top])
 
-        var area = d3.area()
-            .x(d => x(d.data.date))
-            .y0(d => y(d[0]))
-            .y1(d => y(d[1]))
-            .curve(curveSankey);
 
-        var xAxis = svg.append('g')
-            .classed('x axis', true)
-            .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+  <section id="zoom1">
+    <div class="container-fluid">
+      <h2>Finding numero 1</h2>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Gravida dictum fusce ut placerat orci nulla pellentesque
+            dignissim. Massa sapien faucibus et molestie. Praesent elementum
+            facilisis leo vel fringilla est ullamcorper eget nulla. Turpis massa sed elementum tempus egestas sed sed. Erat pellentesque adipiscing commodo elit at imperdiet. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Mauris a diam maecenas sed enim ut sem viverra. Adipiscing commodo elit at imperdiet dui accumsan sit amet.
+            Tortor consequat id porta nibh venenatis cras.</p>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 pippo">
+            <img src="img/img2.png">
+          </div>
+        </div>
+      </section>
 
-        var yAxis = svg.append('g')
-            .classed('y axis', true)
-            .attr("transform", `translate(${margin.left},0)`)
-            .call(d3.axisLeft(y))
+      <section id="zoom2">
+        <div class="container-fluid">
+          <h2>Finding numero 2</h2>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
 
-        svg.append("g").selectAll("path")
-            .data(series)
-            .join("path")
-            .attr("fill", ({
-                key
-            }) => color(key))
-            .attr("d", function(d) {
-                return area(d);
-            })
-            .append("title")
-            .text(({
-                key
-            }) => key);
+              <img src="img/img3.png">
+            </div>
 
-        d3.select('.x.axis .domain').style('stroke-dasharray', function() {
-            var strokeDashArray = '';
-            for (var c = 1; c < ((x(1945) - margin.left) - (x(1943) - margin.left)); c += 3) {
-                strokeDashArray += '1 2 '
-            }
-            strokeDashArray += ((x(1960) - margin.left) - (x(1945) - margin.left));
+            <div class="col-lg-6 col-md-6 col-sm-12">
 
-            for (var c = 1; c < ((x(1962) - margin.left) - (x(1960) - margin.left)); c += 3) {
-                strokeDashArray += '1 2 '
-            }
-            strokeDashArray += ((x(1969) - margin.left) - (x(1962) - margin.left));
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Gravida dictum fusce ut placerat orci nulla pellentesque
+                dignissim. Massa sapien faucibus et molestie. Praesent elementum
+                facilisis leo vel fringilla est ullamcorper eget nulla. Turpis massa sed elementum tempus egestas sed sed. Erat pellentesque adipiscing commodo elit at imperdiet. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Mauris a diam maecenas sed enim ut sem viverra. Adipiscing commodo elit at imperdiet dui accumsan sit amet.
+                Tortor consequat id porta nibh venenatis cras.</p>
+              </div>
+            </div>
 
-            for (var c = 1; c < ((x(1971) - margin.left) - (x(1969) - margin.left)); c += 3) {
-                strokeDashArray += '1 2 '
-            }
-            strokeDashArray += ((x(1986) - margin.left) - (x(1971) - margin.left));
-            return strokeDashArray
-        })
-    })
+          </section>
 
-    // interpolation function
+          <section id="atlas">
+            <div class="container-fluid">
+              <h2>Altri atlanti sullo stesso tema</h2>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <p><a>Dubitare</a></p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.</p>
+                  </div>
 
-    function CurveSankey(context) {
-        this._context = context;
-    }
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <p><a>Cancellazione</a></p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.</p>
+                    </div>
+                  </div>
 
-    CurveSankey.prototype = {
-        areaStart: function() {
-            this._line = 0;
-        },
-        areaEnd: function() {
-            this._line = NaN;
-        },
-        lineStart: function() {
-            this._x = this._y = NaN;
-            this._point = 0;
-        },
-        lineEnd: function() {
-            if (this._line || (this._line !== 0 && this._point === 1)) this._context.closePath();
-            this._line = 1 - this._line;
-        },
-        point: function(x, y) {
-            x = +x, y = +y;
-            switch (this._point) {
-                case 0:
-                    this._point = 1;
-                    this._line ? this._context.lineTo(x, y) : this._context.moveTo(x, y);
-                    break;
-                case 1:
-                    this._point = 2; // proceed
-                default:
-                    var mx = (x - this._x) / 2 + this._x;
-                    this._context.bezierCurveTo(mx, this._y, mx, y, x, y);
-                    break;
-            }
-            this._x = x, this._y = y;
-        }
-    };
+                </section>
+              </div>
 
-    var curveSankey = function(context) {
-        return new CurveSankey(context);
-    }
-</script>
+            </div>
+          </content>
+          <script src="nebbia2.js"></script>
+          <script src="nebbia1.js"></script>
+          <script src="https://d3js.org/d3.v5.js"></script>
+        </body>
