@@ -48,13 +48,13 @@
             .y1(d => y(d[1]))
             .curve(curveSankey);
 
-        var xAxis = svg.append('g')
+        var nxAxis = svg.append('g')
             .classed('x axis', true)
             .attr("transform", `translate(0,${height - margin.bottom})`)
             .call(d3.axisBottom(x).ticks(width / 50).tickSizeOuter(0.0))
 
 
-        var yAxis = svg.append('g')
+        var nyAxis = svg.append('g')
             .classed('y axis', true)
             .attr("transform", `translate(${margin.left},0)`)
             .call(d3.axisRight(y))
