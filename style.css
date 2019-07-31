@@ -65,16 +65,6 @@ a:hover:not(.active) {
   margin:1rem;
 }
 
-.chart {
-  cursor: pointer;
-  /* border:1px solid black; */
-  width:100%;
-  padding:1rem;
-  margin-bottom:1rem;
-}
-
-
-
 
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
@@ -216,6 +206,26 @@ color:#2f4f4f;
   margin-right: 1rem;
 }
 
+
+.car::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 0.6rem;
+  margin-right: 0.5rem;
+  background: #282828;
+}
+
+
+.nc::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 0.6rem;
+  margin-right: 0.5rem;
+  background: #00095E;
+}
+
 .nc::before {
   content: "";
   display: inline-block;
@@ -267,14 +277,29 @@ color:#2f4f4f;
 
 
 
-/*bottom bar/*/
+
 .bottom-bar {
     position: fixed;
     left: 0;
     bottom: 0;
     height: 5vh;
-    transition: bottom 0.35s cubic-bezier(.11,.31,.37,1);
-/*break*/
+    transition: bottom 0.35s cubic-bezier(.11,.31,.37,1);}
+
+
+.area {
+fill: steelblue;
+clip-path: url(#clip);
+}
+
+.zoom {
+cursor: move;
+fill: none;
+pointer-events: all;
+}
+
+.x.axis .domain {
+}
+
 
 @media screen and (min-width: 768px) {
 
