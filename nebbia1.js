@@ -33,14 +33,12 @@ d3.csv('data-tot.csv').then(function(data) {
 
 
   x = d3.scaleLinear()
-  .domain(d3.extent(data, d => +d.date))
-  .range([margin.left, width - margin.right])
-
+      .domain(d3.extent(data, d => d.date))
+      .range([margin.left, width - margin.right])
 
   y = d3.scaleLinear()
-  .domain(d3.extent(data, d => +d.value))
-  // .domain([0, d3.max(series, d => d3.max(d, d => d[1]))]).nice()
-  .range([height - margin.bottom, margin.top])
+      .domain([0, d3.max(series, d => d3.max(d, d => d[1]))]).nice()
+      .range([height - margin.bottom, margin.top])
 
   var area = d3.area()
   .x(d => x(+d.data.date))
@@ -53,11 +51,14 @@ d3.csv('data-tot.csv').then(function(data) {
   .attr("transform", `translate(0,${height - margin.bottom})`)
   .call(d3.axisBottom(x).ticks(width / 50).tickSizeOuter(0.0))
 
-
   var nyAxis = svg.append('g')
   .classed('y axis', true)
   .attr("transform", `translate(${margin.left},0)`)
-  .call(d3.axisRight(y))
+  .call(d3.axisLeft(y))
+
+  svg.append("text")
+      .text("Value");
+
 
   svg.append("g").selectAll("path")
   .data(series)

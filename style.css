@@ -21,6 +21,8 @@ body p {
   font-size: 21px;
 }
 
+
+
 section p{
   font-family: 'Crimson Text', serif;
   font-size: 24px;
@@ -118,9 +120,7 @@ hr {
   cursor: pointer;
 }
 
-/* #sections {
-  position: absolute;
-} */
+
 
 .chart {
   cursor: pointer;
