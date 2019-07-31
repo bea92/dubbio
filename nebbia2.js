@@ -1,4 +1,4 @@
-// <script type="text/javascript">
+
     var margin = ({
         top: 10,
         right: 30,
@@ -23,7 +23,7 @@
         // console.log(series)
 
         let color = d3.scaleOrdinal()
-    .domain(["nc", "na", "cc", "ca"])
+    .domain(data.columns.slice(1))
     .range(["#00095E","#0000ff","#ff0000","#7F0000"]);
 
         x = d3.scaleLinear()

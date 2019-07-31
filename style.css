@@ -266,6 +266,19 @@ color:#2f4f4f;
 
 
 
+.area {
+fill: steelblue;
+clip-path: url(#clip);
+}
+
+.zoom {
+cursor: move;
+fill: none;
+pointer-events: all;
+}
+
+.x.axis .domain {
+}
 
 /*bottom bar/*/
 .bottom-bar {
