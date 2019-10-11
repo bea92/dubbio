@@ -14,7 +14,7 @@
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom);
 
-    d3.csv('data.csv').then(function(data) {
+    d3.csv('data-2.csv').then(function(data) {
         console.log(data);
         data = data.sort(function(a, b) {
             return a.date - b.date;
